@@ -1,4 +1,4 @@
-#' Function applied to each peptide for a group of data with median as default
+#' as_group
 #'
 #' This function allows you to express your love of cats.
 #' @param dat data frame with peptide level data as rows and samples in columns
