@@ -2,10 +2,9 @@ Package: proteomixr
 Type: Package
 Title: Label-free quantitative proteomics on PD 2.2 exported data
 Version: 0.1.0
-Author: Who wrote it
+Author: Thomas O'Leary
 Maintainer: Thomas O'Leary <tsoleary12@gmail.com>
-Description: proteomixr takes peptide level data exported from Proteome 
-Discoverer 2.2 and determines relative abundance information for each protein.
+Description: proteomixr takes peptide level data exported from Proteome Discoverer 2.2 and determines relative abundance information for each protein.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
