@@ -1,17 +1,21 @@
-#' rm_outliers
-#'
 #' Remove outliers in peptide data
+#'
+#' Creates a new data frame with the outliers from original data frame removed.
+#' Outliers are defined as ratios
 #' @param dat a data frame
-#' @param pro_df a data fram containing average ratio by protein
-#' @param ratio specific ratio to remove outliers by
-#' @keywords group
+#' @param pro_df a data fram containing average ratio of each protein
+#' @param ratio a character string of the column name of the ratio used to find
+#' outliers
+#' @param mult multiplier of the sd used to determine the min and max allowable
+#' ratio for each peptide, defaults to 2
+#' @keywords remove outliers
 #' @export
 #' @examples
-#' rm_outliers(df, pro_df, "ratio")
+#' data_rm_out <- rm_outliers(df, pro_df, "ratio")
 
-rm_outliers <- function (dat, pro_df, ratio){
+rm_outliers <- function (dat, pro_df, ratio, mult = 2){
 
-  sd_ratio_temp_df <- protein_group(dat, ratio, FUN = sd) %>%
+  sd_ratio_temp_df <- by_protein(dat, ratio, FUN = sd) %>%
     as.data.frame %>%
     rownames_to_column("Master.Protein.Accessions") %>%
     'colnames<-' (c("Master.Protein.Accessions", "sd_ratios"))
@@ -19,8 +23,8 @@ rm_outliers <- function (dat, pro_df, ratio){
   pro_temp <- full_join(pro_df, sd_ratio_temp_df,
                         by = "Master.Protein.Accessions")
 
-  pro_temp$max_ratio <- pro_temp$ratio + 2 * pro_temp$sd_ratio
-  pro_temp$min_ratio <- pro_temp$ratio - 2 * pro_temp$sd_ratio
+  pro_temp$max_ratio <- pro_temp$ratio + mult * pro_temp$sd_ratio
+  pro_temp$min_ratio <- pro_temp$ratio - mult * pro_temp$sd_ratio
 
   data_rm_out <- NULL
 

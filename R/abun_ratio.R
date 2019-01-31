@@ -1,13 +1,14 @@
-#' abun_ratio
+#' Abundance ratio
 #'
-#' Abundance ratio function
-#' @param dat a data frame
-#' @param group numerator
-#' @param ctrl demoninator
-#' @keywords group
+#' Creates a vector containing the abundance ratio for each peptide
+#' @param dat a data frame containing columns with median peptide abundances
+#' @param group column string or number (numerator of ratio)
+#' @param ctrl column string or number (demoninator of ratio)
+#' defaults to "ctrl_med"
+#' @keywords ratio
 #' @export
 #' @examples
-#' abun_ratio(df, "group1_med", "ctrl_med")
+#' df$ratio <- abun_ratio(df, "group1_med")
 
 
 abun_ratio <- function (dat, group, ctrl = "ctrl_med"){

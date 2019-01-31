@@ -1,12 +1,15 @@
-#' mpa_to_gene
+#' Convert master protein accession to gene symbol
 #'
-#' Convert Master.Protein.Accession to gene symbol
-#' @param dat a data frame with accession numbers
-#' @param gene_dat a reference data frame with all accession numbers and gene symbols
+#' Takes data frame with a "Master.Protein.Accession" column and adds a column
+#' "gene" using a second data frame as a reference to convert between an
+#' "Accession" column and a "Gene" symbol column
+#' @param dat a data frame with only master protein accession numbers
+#' @param gene_dat a reference data frame with all accession numbers and
+#' gene symbols found within the data set
 #' @keywords gene symbol
 #' @export
 #' @examples
-#' mpa_to_gene(df, gene_df)
+#' df$gene <- mpa_to_gene(df, gene_df)
 
 
 mpa_to_gene <- function (dat, gene_dat){
@@ -14,7 +17,7 @@ mpa_to_gene <- function (dat, gene_dat){
   for (i in 1:nrow(dat)){
     temp <- which(dat$gene[i] == gene_dat$Accession, TRUE)
     if (length(temp) == 1){
-      dat$gene <- gsub(dat$gene[i], gene_dat$Gen[temp], dat$gene)
+      dat$gene <- gsub(dat$gene[i], gene_dat$Gene[temp], dat$gene)
     }
   }
   return(dat$gene)

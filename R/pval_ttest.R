@@ -1,13 +1,17 @@
-#' t-test function between groups
+#' P-value of t-test between two groups for each protein group
 #'
-#' This function groups together
-#' @param dat a data frame stacked
-#' @param group
-#' @param ctrl
-#' @keywords ttest
+#' This function returns the a data frame containing the p-value for each
+#' protein grouping in a two-sided non-paired unequal variance t-test
+#' between two specified groups
+#' @param dat a data frame stacked into separate columns with the natural log
+#' of the normalized abundance for each group with a column containing the
+#' Master.Protein.Accessions
+#' @param group character string of the first group
+#' @param ctrl character string of the second (control) group
+#' @keywords t-test p-value
 #' @export
 #' @examples
-#' pval_ttest(df, "group1", "group2")
+#' p_vals <- pval_ttest(stacked, "group1_log", "ctrl_log")
 
 pval_ttest <- function (dat, group, ctrl){
   Master.Protein.Accessions <- NULL
