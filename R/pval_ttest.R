@@ -17,7 +17,7 @@ pval_ttest <- function (dat, group, ctrl){
   Master.Protein.Accessions <- NULL
   p_value <- NULL
   for (pro in unique(dat$Master.Protein.Accessions)){
-    temp <- filter(dat, dat$Master.Protein.Accessions == pro)
+    temp <- dplyr::filter(dat, dat$Master.Protein.Accessions == pro)
     pval_temp <- t.test(temp[, group], temp[, ctrl])$p.value
     Master.Protein.Accessions <- c(Master.Protein.Accessions, pro)
     p_value <- c(p_value, pval_temp)

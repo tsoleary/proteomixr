@@ -2,21 +2,27 @@
 % Please edit documentation in R/rm_outliers.R
 \name{rm_outliers}
 \alias{rm_outliers}
-\title{rm_outliers}
+\title{Remove outliers in peptide data}
 \usage{
-rm_outliers(dat, pro_df, ratio)
+rm_outliers(dat, pro_df, ratio, mult = 2)
 }
 \arguments{
 \item{dat}{a data frame}
 
-\item{pro_df}{a data fram containing average ratio by protein}
+\item{pro_df}{a data fram containing average ratio of each protein}
 
-\item{ratio}{specific ratio to remove outliers by}
+\item{ratio}{a character string of the column name of the ratio used to find
+outliers}
+
+\item{mult}{multiplier of the sd used to determine the min and max allowable
+ratio for each peptide, defaults to 2}
 }
 \description{
-Remove outliers in peptide data
+Creates a new data frame with the outliers from original data frame removed.
+Outliers are defined as ratios
 }
 \examples{
-rm_outliers(df, pro_df, "ratio")
+data_rm_out <- rm_outliers(df, pro_df, "ratio")
 }
-\keyword{group}
+\keyword{outliers}
+\keyword{remove}

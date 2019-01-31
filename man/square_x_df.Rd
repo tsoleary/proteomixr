@@ -2,18 +2,27 @@
 % Please edit documentation in R/square_x_df.R
 \name{square_x_df}
 \alias{square_x_df}
-\title{square_x_df}
+\title{Pooled standard deviation calculation intermediate}
 \usage{
 square_x_df(dat, sd, df)
 }
 \arguments{
 \item{dat}{a data frame with peptide level data as rows and samples in columns}
+
+\item{sd}{peptide level sd of a ratio or median abundance}
+
+\item{df}{degrees of freedom}
 }
 \description{
-Standard deviation of grouped relative abundance using top ionizers
+Multiplies the square of the sd by the degrees of freedom. Used as an
+intermediate as part of the calculation to get the pooled standard deviation
+of a protein group. Returns a vector with the pooled sd calc intermediate
 }
 \examples{
-square_x_df(df,"group1_sd", "group1_df")
+df$sd_calc <- square_x_df(df,"group1_sd", "group1_df")
 }
 \keyword{calc}
+\keyword{deviation}
+\keyword{pooled}
 \keyword{sd}
+\keyword{standard}

@@ -2,20 +2,23 @@
 % Please edit documentation in R/mpa_to_gene.R
 \name{mpa_to_gene}
 \alias{mpa_to_gene}
-\title{mpa_to_gene}
+\title{Convert master protein accession to gene symbol}
 \usage{
 mpa_to_gene(dat, gene_dat)
 }
 \arguments{
-\item{dat}{a data frame with accession numbers}
+\item{dat}{a data frame with only master protein accession numbers}
 
-\item{gene_dat}{a reference data frame with all accession numbers and gene symbols}
+\item{gene_dat}{a reference data frame with all accession numbers and
+gene symbols found within the data set}
 }
 \description{
-Convert Master.Protein.Accession to gene symbol
+Takes data frame with a "Master.Protein.Accession" column and adds a column
+"gene" using a second data frame as a reference to convert between an
+"Accession" column and a "Gene" symbol column
 }
 \examples{
-mpa_to_gene(df, gene_df)
+df$gene <- mpa_to_gene(df, gene_df)
 }
 \keyword{gene}
 \keyword{symbol}

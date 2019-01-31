@@ -2,17 +2,35 @@
 % Please edit documentation in R/ratio_sd.R
 \name{ratio_sd}
 \alias{ratio_sd}
-\title{ratio_sd}
+\title{Standard deviation of a ratio of two means}
 \usage{
 ratio_sd(dat, ratio, sd1, med1, sd2, med2)
 }
 \arguments{
-\item{dat}{a data frame with peptide level data as rows and samples in columns}
+\item{dat}{a data frame with peptide level data as rows and samples
+in columns}
+
+\item{ratio}{character string of ratio column name}
+
+\item{sd1}{character string of sd of group1 column name}
+
+\item{med1}{character string of average of group1 column name}
+
+\item{sd2}{character string of sd of group2 column name}
+
+\item{med2}{character string of average of group2 column name}
 }
 \description{
+creates a vector with the sd of the ratio for each peptide using a
 Taylor Expansion to get the sd of the ratio of two means
 }
 \examples{
-ratio_sd(df, "ratio", "group1_sd", "group1_med", "ctrl_sd", "ctrl_med")
+df$ratio_sd <- ratio_sd(df, "ratio", "group1_sd",
+                        "group1_med", "ctrl_sd", "ctrl_med")
 }
-\keyword{group}
+\keyword{deviation}
+\keyword{expansion}
+\keyword{of}
+\keyword{ratio,}
+\keyword{standard}
+\keyword{taylor}

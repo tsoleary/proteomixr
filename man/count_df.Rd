@@ -2,21 +2,27 @@
 % Please edit documentation in R/count_df.R
 \name{count_df}
 \alias{count_df}
-\title{count_df}
+\title{Count the degrees of freedom for each group}
 \usage{
-count_df(dat, col, dup = 1)
+count_df(dat, col, rep = 1)
 }
 \arguments{
-\item{dat}{a data frame with peptide level data as rows and samples in columns}
+\item{dat}{a data frame containing samples and observations to be counted}
 
 \item{col}{a numeric vector containing the column numbers of the group to be
 counted}
+
+\item{rep}{number of replicates for each sample defaults to one.}
 }
 \description{
-Function to count degrees of freedom in a group, defaults without duplicates
+Counts the number of observations within each group for each peptide and
+divides by the number of replicates -- defaults to one replicate per sample.
 }
 \examples{
-count_df(df, c(4:13), dup = 3)
+# selects the columns containing a string that identifies the group
+group1 <- grep("Sample_norm", colnames(data))
+# three analytical replicates were run for each
+data$group1_df <- count_df(data, group1, rep = 3)
 }
 \keyword{degrees}
 \keyword{freedom}

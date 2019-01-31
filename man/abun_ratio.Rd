@@ -2,21 +2,22 @@
 % Please edit documentation in R/abun_ratio.R
 \name{abun_ratio}
 \alias{abun_ratio}
-\title{abun_ratio}
+\title{Abundance ratio}
 \usage{
 abun_ratio(dat, group, ctrl = "ctrl_med")
 }
 \arguments{
-\item{dat}{a data frame}
+\item{dat}{a data frame containing columns with median peptide abundances}
 
-\item{group}{numerator}
+\item{group}{column string or number (numerator of ratio)}
 
-\item{ctrl}{demoninator}
+\item{ctrl}{column string or number (demoninator of ratio)
+defaults to "ctrl_med"}
 }
 \description{
-Abundance ratio function
+Creates a vector containing the abundance ratio for each peptide
 }
 \examples{
-abun_ratio(df, "group1_med", "ctrl_med")
+df$ratio <- abun_ratio(df, "group1_med")
 }
-\keyword{group}
+\keyword{ratio}

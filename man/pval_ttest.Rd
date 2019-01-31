@@ -2,17 +2,26 @@
 % Please edit documentation in R/pval_ttest.R
 \name{pval_ttest}
 \alias{pval_ttest}
-\title{t-test function between groups}
+\title{P-value of t-test between two groups for each protein group}
 \usage{
 pval_ttest(dat, group, ctrl)
 }
 \arguments{
-\item{dat}{a data frame stacked}
+\item{dat}{a data frame stacked into separate columns with the natural log
+of the normalized abundance for each group with a column containing the
+Master.Protein.Accessions}
+
+\item{group}{character string of the first group}
+
+\item{ctrl}{character string of the second (control) group}
 }
 \description{
-This function groups together
+This function returns the a data frame containing the p-value for each
+protein grouping in a two-sided non-paired unequal variance t-test
+between two specified groups
 }
 \examples{
-pval_ttest(df, "group1", "group2")
+p_vals <- pval_ttest(stacked, "group1_log", "ctrl_log")
 }
-\keyword{ttest}
+\keyword{p-value}
+\keyword{t-test}
