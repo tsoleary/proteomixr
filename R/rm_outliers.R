@@ -9,7 +9,7 @@
 #' @param mult multiplier of the sd used to determine the min and max allowable
 #' ratio for each peptide, defaults to 2
 #' @keywords remove outliers
-#' @import
+#' @import dplyr
 #' @export
 #' @examples
 #' data_rm_out <- rm_outliers(df, pro_df, "ratio")
