@@ -4,7 +4,7 @@
 \alias{gene_to_comp}
 \title{Groups proteins by gene symbols into compartments or sub-compartments}
 \usage{
-gene_to_comp(dat, comp_dat, level = "Compartment")
+gene_to_comp(dat, comp_dat, level = "compartment")
 }
 \arguments{
 \item{dat}{a data frame with gene symbols}

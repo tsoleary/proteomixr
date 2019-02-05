@@ -12,7 +12,7 @@
 #' @examples
 #' df$sub_compartment <- gene_to_comp(df, comp_df, level = "sub_compartment")
 
-gene_to_comp <- function (dat, comp_dat, level = "Compartment"){
+gene_to_comp <- function (dat, comp_dat, level = "compartment"){
   dat$comp <- dat$gene
   for (i in 1:nrow(dat)){
     temp <- which(dat$gene[i] == comp_dat$Gene, TRUE)
