@@ -8,19 +8,21 @@
 #' Master.Protein.Accessions
 #' @param group character string of the first group
 #' @param ctrl character string of the second (control) group
+#' @param col character string of the column with grouping variables, defaults
+#' to "Master.Protein.Accessions"
 #' @keywords t-test p-value
 #' @export
 #' @examples
 #' p_vals <- pval_ttest(stacked, "group1_log", "ctrl_log")
 
-pval_ttest <- function (dat, group, ctrl){
-  Master.Protein.Accessions <- NULL
+pval_ttest <- function (dat, group, ctrl, col = "Master.Protein.Accessions"){
+  name <- NULL
   p_value <- NULL
-  for (pro in unique(dat$Master.Protein.Accessions)){
-    temp <- dplyr::filter(dat, dat$Master.Protein.Accessions == pro)
+  for (pro in unique(dat[, col])) {
+    temp <- dplyr::filter(dat, dat[, col] == pro)
     pval_temp <- t.test(temp[, group], temp[, ctrl])$p.value
-    Master.Protein.Accessions <- c(Master.Protein.Accessions, pro)
+    name <- c(name, pro)
     p_value <- c(p_value, pval_temp)
   }
-  return(as.data.frame(cbind(Master.Protein.Accessions, p_value)))
+  return(as.data.frame(cbind(name, p_value)))
 }

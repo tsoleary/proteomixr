@@ -4,7 +4,7 @@
 \alias{pval_ttest}
 \title{P-value of t-test between two groups for each protein group}
 \usage{
-pval_ttest(dat, group, ctrl)
+pval_ttest(dat, group, ctrl, col = "Master.Protein.Accessions")
 }
 \arguments{
 \item{dat}{a data frame stacked into separate columns with the natural log
@@ -14,6 +14,9 @@ Master.Protein.Accessions}
 \item{group}{character string of the first group}
 
 \item{ctrl}{character string of the second (control) group}
+
+\item{col}{character string of the column with grouping variables, defaults
+to "Master.Protein.Accessions"}
 }
 \description{
 This function returns the a data frame containing the p-value for each
