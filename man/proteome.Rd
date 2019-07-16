@@ -15,7 +15,7 @@ proteome(file_name, organism, wt_samps = "all", group = FALSE,
 
 \item{wt_samps}{"all" if you want to use all samples to weight, otherwise use a pattern that is present in the column names of the samples you wish to use for the weighting}
 
-\item{group}{if you want to}
+\item{group}{if you want to group samples then \code{TRUE}}
 
 \item{group_names}{indicate names of the groups (must be a string pattern present in the samples)}
 

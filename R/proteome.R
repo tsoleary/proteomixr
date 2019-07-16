@@ -4,7 +4,7 @@
 #' @param file_name file containing all peptides for all samples with the columns named Annotated.Sequence, Modifications, Master.Protein.Accessions.
 #' @param organism "mouse" or "human"
 #' @param wt_samps "all" if you want to use all samples to weight, otherwise use a pattern that is present in the column names of the samples you wish to use for the weighting
-#' @param group if you want to
+#' @param group if you want to group samples then \code{TRUE}
 #' @param group_names indicate names of the groups (must be a string pattern present in the samples)
 #' @param top_pep number of top ionizers used
 #' @param min_pep minumum number of peptides found in a protein to be incuded in the analysis
@@ -35,26 +35,14 @@ proteome <- function(file_name, organism,
     stop ("invalid data frame: must have Annotated.Sequence, Modifications,
          Master.Protein.Accessions")
 
-  # # import gene accession ####need to fix paths for PREVIS computer!!!
-  # if (organism == "mouse") {
-  # gene_df <- read.csv(
-  #   "C:/Users/PrevBeast/Documents/Fasta Files/mouse_fasta_gene_accession.csv")
-  # }
-  # if (organism == "human"){
-  #   gene_df <- read.csv(
-  #     "C:/Users/PrevBeast/Documents/Fasta Files/human_fasta_gene_accession.csv")
-  # }
-  # if (organism != "mouse" & organism != "human")
-  #   stop ("only human or mouse organism currently supported")
-
   # import gene accession
   if (organism == "mouse") {
     gene_df <- read.csv(
-      "/Users/tsoleary/previs/mouse_PD_accession_gene.csv")
+      "C:/Users/PrevBeast/Documents/Fasta Files/Mouse/mouse_fasta_accession_gene.csv")
   }
   if (organism == "human"){
     gene_df <- read.csv(
-      "C:/Users/PrevBeast/Documents/Fasta Files/human_fasta_gene_accession.csv")
+      "C:/Users/PrevBeast/Documents/Fasta Files/Human/human_fasta_accession_gene.csv")
   }
   if (organism != "mouse" & organism != "human")
     stop ("only human or mouse organism currently supported")
@@ -105,8 +93,6 @@ proteome <- function(file_name, organism,
       norm_test <- as.data.frame(norm_abun)
       df <- tibble::as_tibble(df)
       df <- cbind(df, norm_test)
-
-
     }
   }
 
@@ -160,7 +146,7 @@ proteome <- function(file_name, organism,
   colnames(pro_df)[2] <- "Accession"
   colnames(pro_df)[3] <- "# of peptides"
 
-  pro_df <- filter(pro_df, Accession != "")
+  pro_df <- dplyr::filter(pro_df, Accession != "")
 
   file_output <- paste0(gsub(".csv", "", file_name), "_r_",
                         format(Sys.time(), "%d %b %Y %H:%M:%S"),
