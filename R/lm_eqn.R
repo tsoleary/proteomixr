@@ -1,7 +1,7 @@
 #' Linear Regression Equation Object
 #'
 #' Creates an character vector with the y = mx + b equation, r-squared, and p-value, to be used for adding to plots
-#' @param lm_object
+#' @param lm_object linear fit object
 #' @keywords equation, linear regression, r-squared, p-value, plot
 #' @export
 #' @examples

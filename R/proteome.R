@@ -33,7 +33,7 @@ proteome <- function(file_name, organism,
       colnames(dat)[2] != "Modifications" &
       colnames(dat)[3] != "Master.Protein.Accessions")
     stop ("invalid data frame: must have Annotated.Sequence, Modifications,
-         Master.Protein.Accessions")
+          Master.Protein.Accessions")
 
   # import gene accession
   if (organism == "mouse") {
@@ -54,7 +54,7 @@ proteome <- function(file_name, organism,
   } else {
     if (sum(grepl(wt_samps, colnames(dat))) < 1)
       stop ("wt_samps must be a pattern that is present in the sample
-           (column) names that are being used to weight the top ionizers")
+            (column) names that are being used to weight the top ionizers")
     wt_grp <- grep(wt_samps, colnames(dat))
   }
 
@@ -98,11 +98,6 @@ proteome <- function(file_name, organism,
 
   df <- as.data.frame(df)
 
-  # grouping
-  if (group == FALSE & norm == FALSE){
-    group_names <- "F"
-  }
-
   if (group == TRUE){
     for (i in 1:length(group_names)){
 
@@ -111,26 +106,37 @@ proteome <- function(file_name, organism,
       } else {
         pat <- group_names[i]
       }
-
       samp_col_group <- grep(pat, colnames(df))
-
       df[, paste0(group_names[i], "_med")] <- by_group(df, samp_col_group)
-
     }
+
     pro_df <- by_protein(df, colnames(df)[grep("_med", colnames(df))]) %>%
       as.data.frame %>%
       rownames_to_column("Master.Protein.Accessions")
 
     colnames(pro_df) <- sub("_med", "", colnames(pro_df))
-  } else {
-
-    all <- colnames(dat)[-c(1,2,3,length(dat))]
-
-    pro_df <- by_protein(df, all) %>%
-      as.data.frame %>%
-      rownames_to_column("Master.Protein.Accessions")
 
   }
+
+
+  if (group == FALSE) {
+    if (norm == FALSE) {
+      all <- colnames(dat)[-c(1,2,3,length(dat))]
+
+      pro_df <- by_protein(df, all) %>%
+        as.data.frame %>%
+        rownames_to_column("Master.Protein.Accessions")
+    }
+    if (norm == TRUE){
+      pro_df <- by_protein(df, colnames(df)[grep("_norm", colnames(df))]) %>%
+        as.data.frame %>%
+        rownames_to_column("Master.Protein.Accessions")
+
+      colnames(pro_df) <- sub("_norm", "", colnames(pro_df))
+    }
+
+  }
+
 
   pro_df$gene <- mpa_to_gene(pro_df, gene_df)
 

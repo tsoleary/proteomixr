@@ -3,7 +3,7 @@
 #' Creates a vector containing the abundance ratio for each peptide
 #' @param dat the model data frame
 #' @param pool_cols all the pools in the model
-#' @param peptide
+#' @param peptide character string of the peptide
 #' @keywords isos, mega model
 #' @export
 #' @examples

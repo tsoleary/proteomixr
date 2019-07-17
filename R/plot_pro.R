@@ -5,7 +5,7 @@
 #' @param g_title title of the plot
 #' @param FUN geom_jitter or geom_point
 #' @param x_pos,y1_pos,y2_pos x and y coordinates of the linear eqn and r-squared objects
-#' @keywords
+#' @keywords plot, protein abundance, time
 #' @export
 #' @examples
 #' pros <- as.character(unique(df$Master.Protein.Accessions))

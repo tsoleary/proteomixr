@@ -6,6 +6,9 @@
 \usage{
 lm_eqn(lm_object)
 }
+\arguments{
+\item{lm_object}{linear fit object}
+}
 \description{
 Creates an character vector with the y = mx + b equation, r-squared, and p-value, to be used for adding to plots
 }

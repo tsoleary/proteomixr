@@ -10,6 +10,8 @@ all_isos(dat, pool_cols, peptide)
 \item{dat}{the model data frame}
 
 \item{pool_cols}{all the pools in the model}
+
+\item{peptide}{character string of the peptide}
 }
 \description{
 Creates a vector containing the abundance ratio for each peptide

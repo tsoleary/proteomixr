@@ -10,6 +10,12 @@ plot_iso_r(dat, g_title, g_subtitle, FUN = geom_jitter, x_pos = 3.35,
 \arguments{
 \item{dat}{a data frame with ratio and week columns}
 
+\item{g_title}{title of the graph}
+
+\item{g_subtitle}{subtitle of the graph}
+
+\item{FUN}{plotting function, geom_jitter or geom_point}
+
 \item{x_pos, y_pos1, y_pos2}{x and y positions of the k and plateau values}
 }
 \description{

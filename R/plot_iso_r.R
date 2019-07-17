@@ -2,9 +2,9 @@
 #'
 #' Plots the changing corrected isotopic ratio over time
 #' @param dat a data frame with ratio and week columns
-#' @param g_title
-#' @param g_subtitle
-#' @param FUN
+#' @param g_title title of the graph
+#' @param g_subtitle subtitle of the graph
+#' @param FUN plotting function, geom_jitter or geom_point
 #' @param x_pos,y_pos1,y_pos2 x and y positions of the k and plateau values
 #' @keywords plot isotopic ratio, corrected
 #' @export
