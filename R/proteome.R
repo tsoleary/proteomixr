@@ -2,7 +2,7 @@
 #'
 #' Creates a data frame with an average abundance of the top ionizers for each protein
 #' @param file_name file containing all peptides for all samples with the columns named Annotated.Sequence, Modifications, Master.Protein.Accessions.
-#' @param organism "mouse" or "human"
+#' @param organism "mouse", "human" or "rat"
 #' @param wt_samps "all" if you want to use all samples to weight, otherwise use a pattern that is present in the column names of the samples you wish to use for the weighting
 #' @param group if you want to group samples then \code{TRUE}
 #' @param group_names indicate names of the groups (must be a string pattern present in the samples)
@@ -44,8 +44,14 @@ proteome <- function(file_name, organism,
     gene_df <- read.csv(
       "C:/Users/PrevBeast/Documents/Fasta Files/Human/human_fasta_accession_gene.csv")
   }
-  if (organism != "mouse" & organism != "human")
-    stop ("only human or mouse organism currently supported")
+  if (organism == "rat"){
+    gene_df <- read.csv(
+      "C:/Users/PrevBeast/Documents/Fasta Files/Rat/rat_fasta_accession_gene.csv")
+  }
+
+
+  if (organism != "mouse" & organism != "human" & organism != "rat")
+    stop ("invalid organism name: only human, mouse or rat currently supported")
 
 
   # determine the top ionizers and sort by them taking only the top_pep
@@ -155,7 +161,7 @@ proteome <- function(file_name, organism,
   pro_df <- dplyr::filter(pro_df, Accession != "")
 
   file_output <- paste0(gsub(".csv", "", file_name), "_r_",
-                        format(Sys.time(), "%d %b %Y %H:%M:%S"),
+                        format(Sys.time(), "%m%d%y%H%M%S"),
                         ".csv")
 
   if (csv == TRUE){

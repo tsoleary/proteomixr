@@ -11,7 +11,7 @@ proteome(file_name, organism, wt_samps = "all", group = FALSE,
 \arguments{
 \item{file_name}{file containing all peptides for all samples with the columns named Annotated.Sequence, Modifications, Master.Protein.Accessions.}
 
-\item{organism}{"mouse" or "human"}
+\item{organism}{"mouse", "human" or "rat"}
 
 \item{wt_samps}{"all" if you want to use all samples to weight, otherwise use a pattern that is present in the column names of the samples you wish to use for the weighting}
 
